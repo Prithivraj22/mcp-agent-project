@@ -1,0 +1,23 @@
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend-node
+
+  backend-node:
+    build: ./backend-node
+    ports:
+      - "4000:4000"
+    environment:
+      - FASTAPI_URL=http://backend-python:8000
+    depends_on:
+      - backend-python
+
+  backend-python:
+    build: ./backend-python
+    ports:
+      - "8000:8000"
+    env_file:
+      - ./backend-python/.env
