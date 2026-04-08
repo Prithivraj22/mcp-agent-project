@@ -161,7 +161,7 @@ export default function App() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ prompt: text }),
       });
-      const data = await res.jgson();
+      const data = await res.json();
       setMessages(m => [...m, {
         role: "agent",
         text: data.reply || data.error || "No response"
