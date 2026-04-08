@@ -3,7 +3,7 @@ import { useState, useRef, useEffect } from "react";
 const styles = {
   body: {
     minHeight: "100vh",
-    background: "linear-gradient(to bottom, #ffffff 0%, #ffcccc 25%, #ff4444 55%, #990000 80%, #4a0000 100%)",
+    background: "linear-gradient(135deg, #0f0c29, #302b63, #24243e)",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -13,7 +13,7 @@ const styles = {
   card: {
     width: "100%",
     maxWidth: 720,
-    background: "rgba(80,0,0,0.45)",
+    background: "rgba(255,255,255,0.05)",
     backdropFilter: "blur(16px)",
     borderRadius: 20,
     border: "1px solid rgba(255,255,255,0.1)",
@@ -21,7 +21,7 @@ const styles = {
     overflow: "hidden",
   },
   header: {
-    background: "linear-gradient(90deg, #c0392b, #e74c3c)",
+    background: "linear-gradient(90deg, #6366f1, #8b5cf6)",
     padding: "20px 28px",
     display: "flex",
     alignItems: "center",
@@ -61,7 +61,7 @@ const styles = {
     padding: "12px 16px",
     borderRadius: isUser ? "18px 18px 4px 18px" : "18px 18px 18px 4px",
     background: isUser
-      ? "linear-gradient(135deg, #c0392b, #e74c3c)"
+      ? "linear-gradient(135deg, #6366f1, #8b5cf6)"
       : "rgba(255,255,255,0.08)",
     color: "#fff",
     fontSize: 14,
@@ -73,7 +73,7 @@ const styles = {
     width: 32,
     height: 32,
     borderRadius: "50%",
-    background: isUser ? "#c0392b" : "rgba(255,255,255,0.1)",
+    background: isUser ? "#6366f1" : "rgba(255,255,255,0.1)",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -84,7 +84,7 @@ const styles = {
   }),
   typingDot: {
     width: 8, height: 8, borderRadius: "50%",
-    background: "#e74c3c", display: "inline-block", margin: "0 2px",
+    background: "#8b5cf6", display: "inline-block", margin: "0 2px",
   },
   inputArea: {
     padding: "16px 24px 20px",
@@ -111,8 +111,8 @@ const styles = {
     height: 46,
     borderRadius: 14,
     background: loading
-      ? "rgba(192,57,43,0.4)"
-      : "linear-gradient(135deg, #c0392b, #e74c3c)",
+      ? "rgba(99,102,241,0.4)"
+      : "linear-gradient(135deg, #6366f1, #8b5cf6)",
     border: "none",
     cursor: loading ? "not-allowed" : "pointer",
     display: "flex",
@@ -161,7 +161,7 @@ export default function App() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ prompt: text }),
       });
-      const data = await res.json();
+      const data = await res.jgson();
       setMessages(m => [...m, {
         role: "agent",
         text: data.reply || data.error || "No response"
